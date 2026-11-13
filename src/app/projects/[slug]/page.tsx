@@ -1,268 +1,230 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { themes } from "@/data/projects";
+{isITCoursework && (
+  <>
+    <section className="project-section">
+      <p className="project-eyebrow">IT PROJECTS & EXPERIENCE</p>
+      <h2>Overview</h2>
+      <p>
+        My IT coursework has involved working with both virtualized
+        infrastructure and physical networking equipment. These
+        experiences provided hands-on practice configuring servers,
+        managing network infrastructure, and working with the systems
+        commonly used in business IT environments.
+      </p>
+    </section>
 
-export function generateStaticParams() {
-  return themes.flatMap((theme) =>
-    theme.projects.map((project) => ({
-      slug: project.slug,
-    }))
-  );
-}
+    <section className="project-section portfolio-feature">
+      <div className="feature-heading">
+        <span className="project-eyebrow">01 / SYSTEMS ADMINISTRATION</span>
+        <h2>Virtualized Windows Server Infrastructure</h2>
+        <p>
+          Building and managing a multi-machine Windows Server
+          environment as part of a systems administration course.
+        </p>
+      </div>
 
-type ProjectPageProps = {
-  params: Promise<{
-    slug: string;
-  }>;
-};
+      <div className="feature-content">
+        <h3>Project Overview</h3>
+        <p>
+          This project involved setting up a collection of virtual
+          machines to simulate the infrastructure found in an
+          organizational IT environment. Throughout the course,
+          different servers and services were installed, configured,
+          and administered to gain experience managing a Windows-based
+          network.
+        </p>
 
-export default async function ProjectPage({ params }: ProjectPageProps) {
-  const { slug } = await params;
+        <h3>Infrastructure & Services</h3>
+        <div className="detail-grid">
+          <div className="detail-card">
+            <h4>Active Directory</h4>
+            <p>
+              Working with domain services, user accounts, and
+              centralized directory management.
+            </p>
+          </div>
 
-  const theme = themes.find((theme) =>
-    theme.projects.some((project) => project.slug === slug)
-  );
+          <div className="detail-card">
+            <h4>Group Policy</h4>
+            <p>
+              Configuring and managing policies to control system
+              settings and administrative behavior.
+            </p>
+          </div>
 
-  const project = theme?.projects.find(
-    (project) => project.slug === slug
-  );
+          <div className="detail-card">
+            <h4>Networking</h4>
+            <p>
+              Configuring network settings and working with the
+              networking requirements of the server environment.
+            </p>
+          </div>
 
-  if (!project || !theme) {
-    notFound();
-  }
+          <div className="detail-card">
+            <h4>Email Services</h4>
+            <p>
+              Working with server-based email infrastructure and
+              its administration.
+            </p>
+          </div>
 
-  const isLocalAI = project.slug === "local-ai-workbench";
-  const isITCoursework = project.slug === "it-coursework";
+          <div className="detail-card">
+            <h4>SharePoint Server</h4>
+            <p>
+              Setting up and working with SharePoint Server 2019
+              in a Windows Server environment.
+            </p>
+          </div>
 
-  return (
-    <main className="project-detail-page">
-      <div className="project-detail-container">
-        <div className="project-breadcrumb">
-          <Link href="/">Home</Link>
-          <span>/</span>
-          <span>{theme.name}</span>
-          <span>/</span>
-          <span>{project.title}</span>
+          <div className="detail-card">
+            <h4>Virtual Machines</h4>
+            <p>
+              Installing, configuring, and managing multiple
+              virtual machines for different infrastructure roles.
+            </p>
+          </div>
         </div>
 
-        <header className="project-header">
-          <p className="project-category">{theme.name}</p>
+        <h3>Skills Developed</h3>
+        <ul>
+          <li>Windows Server installation and administration</li>
+          <li>Managing virtualized server environments</li>
+          <li>Active Directory and Group Policy administration</li>
+          <li>Configuring common organizational IT services</li>
+          <li>Working with server infrastructure and networking</li>
+        </ul>
+      </div>
+    </section>
 
-          <h1>{project.title}</h1>
+    <section className="project-section portfolio-feature">
+      <div className="feature-heading">
+        <span className="project-eyebrow">02 / NETWORKING</span>
+        <h2>Cisco Network Infrastructure</h2>
+        <p>
+          Progressing from network configuration exercises to
+          building a small network using physical Cisco equipment.
+        </p>
+      </div>
 
-          <p className="project-description">
-            {project.description}
-          </p>
+      <div className="feature-content">
+        <h3>Project Overview</h3>
+        <p>
+          A networking course focused on understanding how devices
+          communicate and how network infrastructure is configured.
+          The coursework began with learning networking fundamentals
+          and configuring individual devices, then progressed to
+          building a small functional network using actual hardware.
+        </p>
 
-          <p className="project-status">
-            Status: {project.status}
-          </p>
-        </header>
-
-        {isLocalAI && (
-          <>
-            <section className="project-section">
-              <h2>Overview</h2>
-              <p>
-                This project focuses on building a local AI environment
-                capable of running large language models without relying
-                on cloud-based services. The system uses dedicated GPU
-                hardware and custom software to manage and serve models
-                locally.
-              </p>
-            </section>
-
-            <section className="project-section">
-              <h2>Hardware</h2>
-              <ul>
-                <li>AMD Radeon RX 7900 XT with 20 GB VRAM</li>
-                <li>NVIDIA Tesla V100 with 32 GB HBM2</li>
-                <li>AMD Ryzen 7 7800X3D</li>
-                <li>Custom multi-GPU workstation</li>
-              </ul>
-            </section>
-
-            <section className="project-section">
-              <h2>Software & Technologies</h2>
-              <ul>
-                <li>llama.cpp for local model inference</li>
-                <li>CUDA for NVIDIA GPU acceleration</li>
-                <li>Vulkan for GPU acceleration across supported hardware</li>
-                <li>GGUF models and quantization formats</li>
-                <li>OpenCode for local coding-agent integration</li>
-                <li>Python-based model management and API gateway</li>
-              </ul>
-            </section>
-
-            <section className="project-section">
-              <h2>System Architecture</h2>
-              <p>
-                The environment is designed around assigning models to
-                individual GPUs rather than combining the available
-                hardware into a shared workload. A custom model manager
-                provides a central API gateway and starts individual
-                model servers on separate ports.
-              </p>
-            </section>
-
-            <section className="project-section">
-              <h2>Development Goals</h2>
-              <ul>
-                <li>Run large language models entirely locally.</li>
-                <li>Use each GPU independently for different models.</li>
-                <li>Integrate local models with coding tools.</li>
-                <li>Build a reliable system for managing multiple models.</li>
-                <li>Experiment with different inference backends and formats.</li>
-              </ul>
-            </section>
-          </>
-        )}
-
-        {isITCoursework && (
-          <>
-            <section className="project-section">
-              <h2>Overview</h2>
-              <p>
-                A collection of hands-on IT coursework and labs covering
-                systems administration, networking, cloud computing, and
-                Linux. The work includes building and managing virtualized
-                infrastructure, configuring physical networking equipment,
-                and completing technical training exercises.
-              </p>
-            </section>
-
-            <section className="project-section">
-              <h2>Windows Server & Systems Administration</h2>
-
-              <h3>Virtualized Windows Server Infrastructure</h3>
-
-              <p>
-                A comprehensive virtualized IT environment built as part
-                of a systems administration course. The environment
-                involved setting up and managing multiple virtual
-                machines to simulate the infrastructure used in an
-                organization.
-              </p>
-
-              <p>Areas covered included:</p>
-
-              <ul>
-                <li>Windows Server installation and administration</li>
-                <li>Active Directory and domain management</li>
-                <li>Group Policy configuration and administration</li>
-                <li>Network configuration and management</li>
-                <li>Email services</li>
-                <li>SharePoint Server</li>
-                <li>Managing and integrating multiple virtual machines</li>
-              </ul>
-            </section>
-
-            <section className="project-section">
-              <h2>Networking & Network Infrastructure</h2>
-
-              <p>
-                A hands-on networking course focused on configuring
-                network infrastructure, connecting client devices, and
-                building a functional network using physical hardware.
-              </p>
-
-              <p>Areas covered included:</p>
-
-              <ul>
-                <li>Cisco router configuration</li>
-                <li>Cisco switch configuration</li>
-                <li>Client device network configuration</li>
-                <li>IP addressing and subnetting</li>
-                <li>Network setup and troubleshooting</li>
-                <li>Connecting and configuring physical network hardware</li>
-                <li>Building a small functional network using actual equipment</li>
-              </ul>
-            </section>
-
-            <section className="project-section">
-              <h2>Cloud Computing & AWS</h2>
-
-              <p>
-                Completed training courses and hands-on learning exercises
-                through Amazon's AWS training resources. This work
-                introduced cloud computing concepts and provided
-                experience working with AWS services.
-              </p>
-
-              <p>Training and exercises include:</p>
-
-              <ul>
-                <li>AWS training courses and learning modules</li>
-                <li>Hands-on cloud service exercises</li>
-                <li>Cloud storage and infrastructure concepts</li>
-                <li>Working with AWS services such as S3 and EC2</li>
-              </ul>
-            </section>
-
-            <section className="project-section">
-              <h2>Linux Administration</h2>
-
-              <p>
-                Smaller Linux command-line exercises and labs focused on
-                learning common administration and system management
-                commands.
-              </p>
-
-              <ul>
-                <li>Working with Linux command-line utilities</li>
-                <li>Filtering and processing command output</li>
-                <li>Working with files, directories, and system information</li>
-                <li>Practicing common administration tasks</li>
-              </ul>
-            </section>
-
-            <section className="project-section">
-              <h2>Cybersecurity & Operating Systems Security</h2>
-
-              <p>
-                Coursework covering operating system security and
-                administrative security practices, including Windows
-                security configuration and system administration tasks.
-              </p>
-
-              <ul>
-                <li>Windows security administration</li>
-                <li>Group Policy and security configuration</li>
-                <li>Network security concepts</li>
-                <li>System administration security practices</li>
-              </ul>
-            </section>
-          </>
-        )}
-
-        {!isLocalAI && !isITCoursework && (
-          <section className="project-section">
-            <h2>Overview</h2>
-            <p>{project.description}</p>
-            <p className="placeholder-text">
-              More project details coming soon.
+        <h3>Network Configuration</h3>
+        <div className="detail-grid">
+          <div className="detail-card">
+            <h4>Routers</h4>
+            <p>
+              Configuring Cisco routers and working with the
+              routing functions used to connect networks.
             </p>
-          </section>
-        )}
-
-        <section className="project-section">
-          <h2>Technologies</h2>
-
-          <div className="project-technologies">
-            {project.technologies.map((technology) => (
-              <span key={technology} className="technology-tag">
-                {technology}
-              </span>
-            ))}
           </div>
-        </section>
 
-        <div className="project-footer">
-          <Link href="/" className="back-link">
-            ← Back to Projects
-          </Link>
+          <div className="detail-card">
+            <h4>Switches</h4>
+            <p>
+              Configuring Cisco switches and connecting devices
+              within a local network.
+            </p>
+          </div>
+
+          <div className="detail-card">
+            <h4>IP Addressing</h4>
+            <p>
+              Working with IP addresses, network addressing,
+              and subnetting.
+            </p>
+          </div>
+
+          <div className="detail-card">
+            <h4>Client Configuration</h4>
+            <p>
+              Configuring client devices to communicate properly
+              across the network.
+            </p>
+          </div>
+        </div>
+
+        <h3>Physical Network Build</h3>
+        <p>
+          The course concluded with a practical exercise using
+          physical networking hardware. This involved setting up
+          a small network with Cisco equipment and configuring
+          the connected devices to establish network connectivity.
+        </p>
+
+        <h3>Skills Developed</h3>
+        <ul>
+          <li>Cisco router and switch configuration</li>
+          <li>IP addressing and subnetting</li>
+          <li>Client network configuration</li>
+          <li>Understanding network infrastructure</li>
+          <li>Building and testing a physical network</li>
+        </ul>
+      </div>
+    </section>
+
+    <section className="project-section portfolio-feature">
+      <div className="feature-heading">
+        <span className="project-eyebrow">03 / ADDITIONAL COURSEWORK</span>
+        <h2>IT Training & Technical Labs</h2>
+        <p>
+          Additional coursework and exercises covering cloud
+          computing, Linux administration, and operating system security.
+        </p>
+      </div>
+
+      <div className="feature-content">
+        <div className="coursework-entry">
+          <h3>AWS Training & Labs</h3>
+          <p>
+            Completed training courses and hands-on learning
+            exercises through Amazon's AWS training resources.
+            Topics included cloud computing concepts and working
+            with services such as Amazon S3 and EC2.
+          </p>
+          <div className="project-technologies">
+            <span className="technology-tag">AWS</span>
+            <span className="technology-tag">Amazon S3</span>
+            <span className="technology-tag">Amazon EC2</span>
+            <span className="technology-tag">Cloud Computing</span>
+          </div>
+        </div>
+
+        <div className="coursework-entry">
+          <h3>Linux Administration</h3>
+          <p>
+            Completed command-line exercises and smaller
+            administration labs involving Linux utilities,
+            filtering command output, file management, and
+            working with system information.
+          </p>
+          <div className="project-technologies">
+            <span className="technology-tag">Linux</span>
+            <span className="technology-tag">Bash</span>
+            <span className="technology-tag">Command Line</span>
+          </div>
+        </div>
+
+        <div className="coursework-entry">
+          <h3>Operating Systems Security</h3>
+          <p>
+            Coursework covering operating system security,
+            Windows administration, Group Policy, network
+            security, and system security practices.
+          </p>
+          <div className="project-technologies">
+            <span className="technology-tag">Windows Security</span>
+            <span className="technology-tag">Group Policy</span>
+            <span className="technology-tag">Network Security</span>
+          </div>
         </div>
       </div>
-    </main>
-  );
-}
+    </section>
+  </>
+)}

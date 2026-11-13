@@ -404,4 +404,99 @@ button {
     opacity: 0.7;
   }
 
+  /* IT portfolio project sections */
+
+.project-eyebrow {
+  display: block;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.8rem;
+}
+
+.portfolio-feature {
+  border-top: 1px solid var(--surface-hover);
+  padding-top: 2rem;
+  margin-top: 2.5rem;
+}
+
+.feature-heading {
+  margin-bottom: 2rem;
+}
+
+.feature-heading h2 {
+  margin-bottom: 0.75rem;
+}
+
+.feature-heading > p {
+  color: var(--muted);
+  max-width: 750px;
+  line-height: 1.7;
+}
+
+.feature-content h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+.feature-content > p {
+  line-height: 1.8;
+  max-width: 850px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 2rem;
+}
+
+.detail-card {
+  border: 1px solid var(--surface-hover);
+  background: var(--surface);
+  padding: 1.25rem;
+  border-radius: 6px;
+}
+
+.detail-card h4 {
+  margin: 0 0 0.6rem;
+  color: var(--foreground);
+}
+
+.detail-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.coursework-entry {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--surface-hover);
+}
+
+.coursework-entry:first-child {
+  padding-top: 0;
+}
+
+.coursework-entry:last-child {
+  border-bottom: none;
+}
+
+.coursework-entry h3 {
+  margin-top: 0;
+}
+
+.coursework-entry p {
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 850px;
+}
+
+@media (max-width: 640px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 }
