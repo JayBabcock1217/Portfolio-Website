@@ -1,4 +1,3 @@
-
 export const themes = [
   {
     name: "Software & AI",
@@ -30,14 +29,14 @@ export const themes = [
         slug: "it-coursework",
         title: "IT Coursework & Labs",
         description:
-          "A collection of hands-on IT projects and coursework covering Linux administration, cloud computing, networking, Windows Server, cybersecurity, and systems administration.",
+          "Hands-on IT coursework covering Windows Server administration, Cisco networking, Linux command-line tools, and AWS training.",
         technologies: [
-          "Linux",
-          "AWS",
           "Windows Server",
           "Active Directory",
+          "Cisco",
+          "Linux",
+          "AWS",
           "Networking",
-          "Docker",
         ],
         status: "Ongoing",
       },
