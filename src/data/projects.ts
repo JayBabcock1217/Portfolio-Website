@@ -23,6 +23,27 @@ export const themes = [
     ],
   },
   {
+    name: "IT",
+    description: "IT coursework, technical labs, and infrastructure projects.",
+    projects: [
+      {
+        slug: "it-coursework",
+        title: "IT Coursework & Labs",
+        description:
+          "A collection of hands-on IT projects and coursework covering Linux administration, cloud computing, networking, Windows Server, cybersecurity, and systems administration.",
+        technologies: [
+          "Linux",
+          "AWS",
+          "Windows Server",
+          "Active Directory",
+          "Networking",
+          "Docker",
+        ],
+        status: "Ongoing",
+      },
+    ],
+  },
+  {
     name: "Astronomy",
     description: "Optics, telescope systems, and astrophotography.",
     projects: [
